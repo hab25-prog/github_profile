@@ -1,0 +1,75 @@
+.main {
+  background-color: rgb(55, 65, 81);
+  margin: 0 200px;
+
+  position: relative;
+}
+.profile {
+  border: 5px solid #20293a;
+  border-radius: 11px;
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  top: -35px;
+}
+.profile img {
+  height: 100%;
+  width: 100%;
+}
+.userInfo {
+  display: flex;
+  margin-left: 150px;
+  gap: 15px;
+}
+.tabbe {
+  width: auto;
+  padding: 8px 16px;
+  background-color: #111629;
+  border-radius: 9px;
+}
+.tabbe span {
+  border-left: 1px solid #364153;
+  padding-left: 10px;
+}
+.title {
+  margin-bottom: 45px;
+  margin-top: 45px;
+}
+h1 {
+  font-size: 25px;
+}
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 40px;
+}
+@media (max-width: 760px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  .profile {
+    left: 20px;
+  }
+  .userInfo {
+    display: grid;
+    grid-template-columns: auto;
+    margin-left: 0;
+    margin-top: 100px;
+    z-index: 50;
+  }
+  .tabbe {
+    width: fit-content;
+  }
+  .tabbe span {
+    width: auto;
+  }
+  .section {
+    grid-template-columns: 1fr;
+  }
+}
