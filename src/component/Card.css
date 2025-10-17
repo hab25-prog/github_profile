@@ -7,4 +7,5 @@
   background: linear-gradient(95deg, #111729 3%, #1d1b48 99.61%);
   border-radius: 9px;
   box-shadow: 1px 1px 5px #1a1f34;
+  cursor: pointer;
 }

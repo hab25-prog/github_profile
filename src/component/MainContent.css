@@ -3,6 +3,7 @@
   margin: 0 200px;
 
   position: relative;
+  /* overflow: scroll; */
 }
 .profile {
   border: 5px solid #20293a;
@@ -43,6 +44,9 @@ h1 {
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   row-gap: 40px;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 300px;
 }
 @media (max-width: 760px) {
   .main {

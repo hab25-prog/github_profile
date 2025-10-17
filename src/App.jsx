@@ -1,88 +1,101 @@
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import MainContent from "./component/MainContent";
 
-const users = [
-  {
-    userName: "habtamu",
-    followers: 200,
-    following: 300,
-    location: "BahirDar",
-    img: "/asset/hub.jpg",
-    repositories: [
-      {
-        name: "smart acess",
-        descrption: "degital library for high school",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "Natures",
-        descrption: "Tourism",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "banking website",
-        descrption: "commersial website for banks",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "coffeListing",
-        descrption: "list the coffee in thier property",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-    ],
-  },
-  {
-    userName: "getch",
-    followers: 400,
-    following: 600,
-    location: "BahirDar",
-    repositories: [
-      {
-        name: "smart acess",
-        descrption: "degital library for high school",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "Natures",
-        descrption: "Tourism",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "banking website",
-        descrption: "commersial website for banks",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-      {
-        name: "coffeListing",
-        descrption: "list the coffee in thier property",
-        nesting: 43,
-        child: 22,
-        stars: 400,
-      },
-    ],
-  },
-];
+// const users = [
+//   {
+//     userName: "habtamu",
+//     followers: 200,
+//     following: 300,
+//     location: "BahirDar",
+//     img: "/asset/hub.jpg",
+//     repositories: [
+//       {
+//         name: "smart acess",
+//         descrption: "degital library for high school",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "Natures",
+//         descrption: "Tourism",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "banking website",
+//         descrption: "commersial website for banks",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "coffeListing",
+//         descrption: "list the coffee in thier property",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//     ],
+//   },
+//   {
+//     userName: "getch",
+//     followers: 400,
+//     following: 600,
+//     location: "BahirDar",
+//     repositories: [
+//       {
+//         name: "smart acess",
+//         descrption: "degital library for high school",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "Natures",
+//         descrption: "Tourism",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "banking website",
+//         descrption: "commersial website for banks",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//       {
+//         name: "coffeListing",
+//         descrption: "list the coffee in thier property",
+//         nesting: 43,
+//         child: 22,
+//         stars: 400,
+//       },
+//     ],
+//   },
+// ];
 
 function App() {
   const [query, setQuery] = useState("");
+  const [user, setUser] = useState(null);
+  useEffect(
+    function () {
+      async function getUser() {
+        const res = await fetch(`https://api.github.com/users/${query}`);
+        const data = await res.json();
+        console.log(data);
+        setUser(data);
+      }
+      getUser();
+    },
+    [query]
+  );
   function handleInput(e) {
     setQuery(e.target.value);
   }
@@ -90,7 +103,7 @@ function App() {
   return (
     <div>
       <Banner handleInput={handleInput} query={query} />
-      <MainContent users={users} query={query} />
+      <MainContent user={user} />
     </div>
   );
 }
